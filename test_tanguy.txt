@@ -1,4 +1,4 @@
-#Projet GIFI 2018
+#Projet GIF 2018
 #LE ROY Tanguy,POUYET Timothé
 
 
@@ -7,3 +7,31 @@ typedef struct Ville{
   int numVille;
   struct Ville * pSuivant;
   struct Ville *pPrecedent;
+  tlivraison * listeLivraison;
+}tVille;
+
+typedef struct livrason{
+  int chauffeur;
+  int capacite;
+  int disponible;
+  tVille * enLivraison
+ struct livraison *livraisonSuivant;
+}tlivraison;
+
+
+int main {
+int m;
+printf("Choissez l'opération que vous voulez effectuer:/n");
+printf("1-Ajouter une ville. /n");
+printf("2-Modifier une ville. /n");
+printf("3-Supprimer une ville. /n");
+printf("4-Ajoutez une livraison. /n");
+printf("5-Modifier une livraison dans une ville. /n");
+printf("6-Supprimer une livraison dans une ville. /n");
+printf("7-Rechercher un chauffeur disponible ayant une capacité N dans une ville. /n");
+printf("8-Rechercher un chauffeur ayant une capacité N. /n");
+printf("9-Transfert d'un chauffeur d'une villà une autre. /n");
+printf("0-Quitter le menu);
+scanf("%d",&m);
+}
+
