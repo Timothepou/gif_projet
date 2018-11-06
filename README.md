@@ -22,7 +22,9 @@ TODO:
 8. Rechercher un chauffeur disponible ayant une capacité N dans toutes les villes
 9. Transférer un chauffeur X d'une ville A à une ville B
 10. Quitter
+
 DOING:
+
 DONE:
 
 #### Création des typedef (livraison et ville)
