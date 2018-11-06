@@ -1,9 +1,0 @@
-#Projet GIFI 2018
-#LE ROY Tanguy,POUYET Timothé
-
-
-
-typedef struct Ville{ 
-  int numVille;
-  struct Ville * pSuivant;
-  struct Ville *pPrecedent;
