@@ -1,13 +1,8 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include "../structures.c"
-
 void ajouterVille(ptville pdebut){
 	ptville py = (ptville)malloc(sizeof(tville));
-	ptville px = pdebut->villeSuivante;
+	ptville px = pdebut;
 
-	while(px->villeSuivante != NULL)
+	while(px->villeSuivante->villeSuivante != NULL)
 	{
 		px = px->villeSuivante; // on trouve la dernière ville
 	}

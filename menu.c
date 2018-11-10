@@ -1,71 +1,113 @@
 #include "structures.c"
+#include "functions/ajouterVille.c"
+// #include "functions/modiferVille.c"
+#include "functions/supprimerVille.c"
 
-int main{
-  int a;
-  printf("Choissisez l'opétation à effectuer:\n");
-  printf("1- Ajouter une ville. \n");  
-  printf("2- Modifier une ville. \n"); 
-  printf("3- Supprimer une ville. \n");
-  printf("4- Ajouter une livraison dans une ville. \n");
-  printf("5- Supprimer une livrasion dans une ville. \n");
-  printf("6- Modifier une livraison dans une ville. \n");
-  printf("7- Rechercher un chauffeur disponible ayant une capacité N dans une ville V. \n");
-  printf("8- Rechercher un chauffeur disponible ayant une capacité N dans toutes les villes. \n");
-  printf("9- Transférer un chauffeur X d'une ville A à une ville B. \n");
-  printf("0- Quitter. \n");
-  scanf("%d%",&a);
-  switch(a)
-{
-    case 1:
+void afficherVille(ptville pdebutVille){
 
-      break;
-    case 2:
+    ptville px = pdebutVille;
 
-      break;
-    case 3:
-  
-      break;
-    case 4:
-
-      break;
-    case 5:
-
-      break;
-    case 6:
-
-      break;
-    case 7:
-
-      break;
-    case 8:
-
-      break;
-    case 9:
-
-      break;
-    case 0:
-      printf("Fermeture du programme");
-      return 0;
-    default:
-     printf("Erreur veuillez choisir un nombre entre 0 et 9  ");
-     break;
-}
-      
- 
-
-
-
-
-
-
-
-
-
-
-
+    while(px->villeSuivante->villeSuivante != NULL)
+    {
+        px = px->villeSuivante;
+        printf("[OK] Ville n°%d\n", px->numVille);
+    }
 }
 
+int main(){
+
+  char T[1];
+  int a = 0;
+  printf("[1]- Ajouter une ville. \n"
+         "[2]- Modifier une ville. \n"
+         "[3]- Supprimer une ville. \n"
+         "[4]- Ajouter une livraison dans une ville. \n"
+         "[5]- Supprimer une livrasion dans une ville. \n"
+         "[6]- Modifier une livraison dans une ville. \n"
+         "[7]- Rechercher un chauffeur disponible ayant une capacité N dans une ville V. \n"
+         "[8]- Rechercher un chauffeur disponible ayant une capacité N dans toutes les villes. \n"
+         "[9]- Afficher les villes. \n"
+         "[0]- Quitter. \n\n"
+         "Choissisez l'opération à effectuer: ");
+
+  scanf("%c", &T[0]);
+  if( ((int)T[0] >= 48) && ((int)T[0] <= 57) )
+    printf("");
+  else
+    printf("[!!!] Veuillez entrer un chiffre entre 0 et 9\n");
+
+  a = (int)T[0] - 48;
+
+  if(a <= 0 || a > 9){
+        printf("[***] Fermeture du programme."); // TODO: Gérer les erreurs, ex: scanf un caractère
+        return 0;
+  }
+
+  ptville pdebutVille = (ptville)malloc(sizeof(tville));
+  ptville pfinVille = (ptville)malloc(sizeof(tville));
+  pdebutVille->numVille = 0;
+  pfinVille->numVille = 0;
+  pdebutVille->villeSuivante = pfinVille;
+  pdebutVille->villePrecedente = NULL;
+  pfinVille->villePrecedente = pdebutVille;
+  pfinVille->villeSuivante = NULL;
+  int numVille;
 
 
 
+  while(a != 0)
+  {
+    switch(a)
+    {
+      case 1:
+        ajouterVille(pdebutVille);
+        break;
 
+      case 2:
+      printf("[OK] Test : Succes");
+        break;
+
+      case 3:
+        printf("[?] Quelle ville voulez-vous supprimez : ");
+        scanf("%d", &numVille);
+        supprimerVille(pdebutVille, numVille);
+        break;
+
+      case 4:
+        break;
+
+      case 5:
+        break;
+
+      case 6:
+        break;
+
+      case 7:
+        break;
+
+      case 8:
+        break;
+
+      case 9:
+        afficherVille(pdebutVille);
+        break;
+     }
+
+     printf("\n[1]- Ajouter une ville. \n"
+            "[2]- Modifier une ville. \n"
+            "[3]- Supprimer une ville. \n"
+            "[4]- Ajouter une livraison dans une ville. \n"
+            "[5]- Supprimer une livrasion dans une ville. \n"
+            "[6]- Modifier une livraison dans une ville. \n"
+            "[7]- Rechercher un chauffeur disponible ayant une capacité N dans une ville V. \n"
+            "[8]- Rechercher un chauffeur disponible ayant une capacité N dans toutes les villes. \n"
+            "[9]- Transférer un chauffeur X dune ville A à une ville B. \n"
+            "[0]- Quitter. \n\n"
+            "Choissisez l'opération à effectuer: ");
+     scanf("%d", &a);
+     if(a <= 0 || a > 9){
+        printf("[***] Fermeture du programme.");
+        return 0;
+     }
+  }
+}

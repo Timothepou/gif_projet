@@ -1,19 +1,35 @@
-#include "../structures.c"
+void supprimerVille(ptville pvilleDebut, int numeroVille){
 
-void supprimerVille(ptville pvilleDebut, int numVille){
+    ptville px = pvilleDebut;
+    ptville pAvantx = (ptville)malloc(sizeof(tville));
+    int presence = 0;
 
-    ptville px = pvilleDebut->villeSuivante;
-    ptville pAvantx;
-
-    while(px->numVille != numVille)
+    while(px->villeSuivante!= NULL) // On vérifie que la ville à supprimer existe
     {
-        pAvantx = px;
-        px = px->villeSuivante; // on trouve la ville à supprimer
+        if(px->numVille == numeroVille)
+        {
+            presence = 1;
+            break;
+        }
+        px = px->villeSuivante;
     }
 
-    px->villeSuivante->villePrecedente = pAvantx;
-    pAvantx->villeSuivante = px->villeSuivante;
-    px = NULL;
-    
-    printf("[OK] Suppression de la ville %d avec succès !", px->numVille);
+    px = pvilleDebut;
+
+    if(presence == 1)
+    {
+        while(px->numVille != numeroVille) // on trouve la ville à supprimer
+        {
+            pAvantx = px; // 0 1 2 3
+            px = px->villeSuivante; // 1 2 3 4
+        }
+        pAvantx->villeSuivante = px->villeSuivante;
+        px->villeSuivante->villePrecedente = pAvantx; // mettre en place un système de poubelle
+
+        printf("[OK] Suppression de la ville %d avec succès !\n", px->numVille);
+        px = NULL; // le ptr px ne pointe nulle part
+    }
+    else
+        printf("[!!!] La ville %d n'existe pas !\n", numeroVille);
+
 }
