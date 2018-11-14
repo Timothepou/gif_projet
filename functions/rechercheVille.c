@@ -10,5 +10,5 @@ ptville rechercherVille(ptville pdebut, int numVille){
             presence = 1;
     }
     if(presence == 1){return px;}
-    else{return 0;}
+    else{return NULL;}
 }

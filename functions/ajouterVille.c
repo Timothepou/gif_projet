@@ -1,4 +1,4 @@
-void ajouterVille(ptville pdebut){
+void ajouterVille(ptville pdebut, int postal){
 	ptville py = (ptville)malloc(sizeof(tville));
 	ptville px = pdebut;
 
@@ -8,7 +8,7 @@ void ajouterVille(ptville pdebut){
 	}
 
 	/* Ajout de py à la fin de la liste ville */
-	py->numVille = px->numVille + 1;
+	py->numVille = postal;
 	py->villeSuivante = px->villeSuivante;
 	py->villePrecedente = px;
 	px->villeSuivante = py;

@@ -1,6 +1,5 @@
 #include "structures.c"
 #include "functions/ajouterVille.c"
-// #include "functions/modiferVille.c"
 #include "functions/supprimerVille.c"
 
 void afficherVille(ptville pdebutVille){
@@ -52,6 +51,7 @@ int main(){
   pfinVille->villePrecedente = pdebutVille;
   pfinVille->villeSuivante = NULL;
   int numVille;
+  int postal;
 
 
 
@@ -60,7 +60,9 @@ int main(){
     switch(a)
     {
       case 1:
-        ajouterVille(pdebutVille);
+        printf("Quel est le code postal de la ville : ");
+        scanf("%d", &postal);
+        ajouterVille(pdebutVille, postal);
         break;
 
       case 2:
