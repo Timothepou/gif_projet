@@ -1,14 +1,13 @@
-ptville rechercherVille(ptville pdebut, int numVille){
+ptville rechercherVille(ptville pdebutVille, int numVille){
 
-    ptville px = pdebut->villeSuivante;
-    int presence = 0;
+    ptville px = pdebutVille->villeSuivante;
 
-    while(px->numVille != numVille)
+    while(px->villeSuivante != NULL)
     {
-        px = px->villeSuivante;
         if(px->numVille == numVille)
-            presence = 1;
+            return px;
+        else
+            px = px->villeSuivante;
     }
-    if(presence == 1){return px;}
-    else{return NULL;}
+    return NULL;
 }

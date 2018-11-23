@@ -1,46 +1,41 @@
-#include "../structures.c"
 #include "rechercheVille.c"
 
-void ajouterLivraison(ptlivraison plivraisonDebut, int numVille, int chauffeur, int capacite, int disponible){
+void ajouterLivraison(ptville pdebutVille, int numVille){
 
-        ptlivraison py=(ptlivraison)malloc(sizeof(tlivraison);
-        ptlivraison px=plivraisonDebut;
-        ptville ptest=(ptville)malloc(sizeof(tville);
-        int postal;
+        ptlivraison py = (ptlivraison)malloc(sizeof(tlivraison)), px;
+        ptville ptest = rechercherVille(pdebutVille, numVille), pz;
+        int postal, capacite;
 
-        ptville pz = rechercheVille(numVille);
-        ptest = rechercheVille(postal);
-        if(ptest == NULL)
-        {
+        if(ptest == NULL){
             printf("Cette ville n'existe pas");
+            return 0;
         }
         else
-        {
+            printf("Quelle est la capacite du camion : ");
+            scanf("%d", &capacite);
             pz = ptest;
-        }
+            px = pz->listeLivraison;
 
         while(px->livraisonSuivante->livraisonSuivante != NULL)
         {
             px = px->livraisonSuivante;
         }
 
+        printf("Où va la livraison : ");
+        scanf("%d", &postal);
+        ptest = rechercherVille(pdebutVille, postal);
+        if(ptest == NULL){
+            printf("Cette ville n'existe pas");
+            return 0;
+        }
+        else{
+            py->enLivraison = ptest;
+            printf("[OK] Livraison en direction de %d ajoutée avec succès !", py->enLivraison->numVille);
+        }
+
+        py->chauffeur = rechercheNbChauffeur(pdebutVille) + 1; // fonction qui renvoie le numéro du dernier chauffeur + 1.
         py->livraisonSuivante = px->livraisonSuivante;
         px->livraisonSuivante = py;
-        py->chauffeur = chauffeur;
         py->capacite = capacite;
-        py->disponible = disponible;
-
-        if(py->disponible == 0)
-        {
-            printf("Où va la livraison : ");
-            scanf("%d", &postal);
-            ptest = rechercheVille(postal);
-            if(ptest == NULL)
-            {
-                printf("Cette ville n'existe pas");
-            }
-            else
-            {
-                py->enLivraison = ptest;
-            }
-        }
+        py->disponible = 1;
+}

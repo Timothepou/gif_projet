@@ -1,6 +1,8 @@
 #include "structures.c"
 #include "functions/ajouterVille.c"
 #include "functions/supprimerVille.c"
+#include "functions/ajouterLivraison.c"
+#include "functions/rechercherNbChauffeur.c"
 
 void afficherVille(ptville pdebutVille){
 
@@ -10,6 +12,18 @@ void afficherVille(ptville pdebutVille){
     {
         px = px->villeSuivante;
         printf("[OK] Ville n°%d\n", px->numVille);
+    }
+}
+
+void afficherLivraison(ptville pdebutVille, int numVille){
+
+    ptville px = rechercherVille(pdebutVille, numVille);
+    ptlivraison plivraison = px->listeLivraison;
+
+    while(plivraison->livraisonSuivante->livraisonSuivante != NULL)
+    {
+        plivraison = plivraison->livraisonSuivante;
+        printf("[OK] Livraison n°%d\n", plivraison->chauffeur);
     }
 }
 
@@ -50,10 +64,8 @@ int main(){
   pdebutVille->villePrecedente = NULL;
   pfinVille->villePrecedente = pdebutVille;
   pfinVille->villeSuivante = NULL;
-  int numVille;
-  int postal;
 
-
+  int numVille, nbChauffeur, postal;
 
   while(a != 0)
   {
@@ -66,7 +78,7 @@ int main(){
         break;
 
       case 2:
-      printf("[OK] Test : Succes");
+        printf("[OK] Test : Succes");
         break;
 
       case 3:
@@ -76,18 +88,27 @@ int main(){
         break;
 
       case 4:
+        printf("Dans quelle ville ajouter la livraison : ");
+        scanf("%d", &numVille);
+        ajouterLivraison(pdebutVille, numVille);
         break;
 
       case 5:
+        nbChauffeur = rechercheNbChauffeur(pdebutVille);
+        printf("Nb du plus grand chauffeur : %d", nbChauffeur);
         break;
 
       case 6:
+        printf("Num du dernier chauffeur : %d", rechercheNbChauffeur(pdebutVille));
         break;
 
       case 7:
         break;
 
       case 8:
+        printf("De quelle ville afficher les livraisons : ");
+        scanf("%d", &numVille);
+        afficherLivraison(pdebutVille, numVille);
         break;
 
       case 9:

@@ -1,6 +1,5 @@
 void ajouterVille(ptville pdebut, int postal){
-	ptville py = (ptville)malloc(sizeof(tville));
-	ptville px = pdebut;
+	ptville py = (ptville)malloc(sizeof(tville)), px = pdebut;
 
 	while(px->villeSuivante->villeSuivante != NULL)
 	{
@@ -14,12 +13,14 @@ void ajouterVille(ptville pdebut, int postal){
 	px->villeSuivante = py;
 
 	/* Déclaration de la liste des livraisons pour cette ville */
-	ptlivraison livraisonFin = NULL;
 
-	ptlivraison livraisonDebut = (ptlivraison)malloc(sizeof(tlivraison));
-	livraisonDebut->livraisonSuivante = livraisonFin;
-
+    ptlivraison livraisonDebut = (ptlivraison)malloc(sizeof(tlivraison));
+	ptlivraison livraisonFin = (ptlivraison)malloc(sizeof(tlivraison));
 	py->listeLivraison = livraisonDebut;
+	livraisonFin->livraisonSuivante = NULL;
+	livraisonDebut->livraisonSuivante = livraisonFin;
+	livraisonDebut->chauffeur = 0;
+	livraisonFin->chauffeur = 0;
 
 	printf("[OK] Ville %d ajoutée avec succès !", py->numVille);
 }
