@@ -7,6 +7,7 @@
 #include "functions/rechercherNbChauffeur.c"
 #include "functions/afficherLivraison.c"
 #include "functions/supprimerLivraison.c"
+#include "functions/rechercherChauffeurCapacite.c"
 
 void afficherVille(ptville pdebutVille){
 
@@ -98,6 +99,9 @@ int main(){
         break;
 
       case 7:
+      	printf("Quelle est la ville : ");
+      	scanf("%d", &numVille);
+      	rechercheChauffeurCapacite(pdebutVille, numVille);
         break;
 
       case 8:
