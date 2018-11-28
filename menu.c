@@ -1,5 +1,7 @@
 #include "structures.c"
+#include "functions/rechercheVille.c"
 #include "functions/ajouterVille.c"
+#include "functions/modifierVille.c"
 #include "functions/supprimerVille.c"
 #include "functions/ajouterLivraison.c"
 #include "functions/rechercherNbChauffeur.c"
@@ -55,7 +57,7 @@ int main(){
   pfinVille->villePrecedente = pdebutVille;
   pfinVille->villeSuivante = NULL;
 
-  int numVille, nbChauffeur, postal;
+  int numVille, newnumVille, nbChauffeur, postal;
 
   while(a != 0)
   {
@@ -68,7 +70,9 @@ int main(){
         break;
 
       case 2:
-        printf("[OK] Test : Succes");
+        printf("Quelle ville voulez-vous modifier : ");
+        scanf("%d", &numVille);
+        modifierVille(pdebutVille, numVille);
         break;
 
       case 3:
