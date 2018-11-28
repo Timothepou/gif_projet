@@ -3,6 +3,8 @@
 #include "functions/supprimerVille.c"
 #include "functions/ajouterLivraison.c"
 #include "functions/rechercherNbChauffeur.c"
+#include "functions/afficherLivraison.c"
+#include "functions/supprimerLivraison.c"
 
 void afficherVille(ptville pdebutVille){
 
@@ -12,18 +14,6 @@ void afficherVille(ptville pdebutVille){
     {
         px = px->villeSuivante;
         printf("[OK] Ville n°%d\n", px->numVille);
-    }
-}
-
-void afficherLivraison(ptville pdebutVille, int numVille){
-
-    ptville px = rechercherVille(pdebutVille, numVille);
-    ptlivraison plivraison = px->listeLivraison;
-
-    while(plivraison->livraisonSuivante->livraisonSuivante != NULL)
-    {
-        plivraison = plivraison->livraisonSuivante;
-        printf("[OK] Livraison n°%d\n", plivraison->chauffeur);
     }
 }
 
@@ -94,8 +84,9 @@ int main(){
         break;
 
       case 5:
-        nbChauffeur = rechercheNbChauffeur(pdebutVille);
-        printf("Nb du plus grand chauffeur : %d", nbChauffeur);
+      	printf("Dans quelle ville se trouve la livraison � supprimer : ");
+      	scanf("%d", &numVille);
+      	supprimerLivraison(pdebutVille, numVille);
         break;
 
       case 6:
