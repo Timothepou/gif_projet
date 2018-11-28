@@ -1,5 +1,3 @@
-#include "rechercheVille.c"
-
 void ajouterLivraison(ptville pdebutVille, int numVille){
 
         ptlivraison py = (ptlivraison)malloc(sizeof(tlivraison)), px;
