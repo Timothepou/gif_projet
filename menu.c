@@ -8,6 +8,8 @@
 #include "functions/afficherLivraison.c"
 #include "functions/supprimerLivraison.c"
 #include "functions/rechercherChauffeurCapacite.c"
+#include "functions/rechercherChauffeurCapaciteAll.c"
+#include "functions/modifierLivraison.c"
 
 void afficherVille(ptville pdebutVille){
 
@@ -30,7 +32,7 @@ int main(){
          "[4]- Ajouter une livraison dans une ville. \n"
          "[5]- Supprimer une livrasion dans une ville. \n"
          "[6]- Modifier une livraison dans une ville. \n"
-         "[7]- Rechercher un chauffeur disponible ayant une capacité N dans une ville V. \n"
+         "[7]- Rechercher un chauffeur disponible ayant une capacité N dans une ville V.\n"
          "[8]- Rechercher un chauffeur disponible ayant une capacité N dans toutes les villes. \n"
          "[9]- Afficher les villes. \n"
          "[0]- Quitter. \n\n"
@@ -58,7 +60,7 @@ int main(){
   pfinVille->villePrecedente = pdebutVille;
   pfinVille->villeSuivante = NULL;
 
-  int numVille, newnumVille, nbChauffeur, postal;
+  int numVille, newnumVille, nbChauffeur, postal, capacite;
 
   while(a != 0)
   {
@@ -95,19 +97,21 @@ int main(){
         break;
 
       case 6:
-        printf("Num du dernier chauffeur : %d", rechercheNbChauffeur(pdebutVille));
+        printf("Dans quelle ville se trouve la livraison : ");
+        scanf("%d", &numVille);
+        modifierLivraison(pdebutVille, numVille);
         break;
 
       case 7:
-      	printf("Quelle est la ville : ");
+      	printf("Dans quelle ville rechercher une livraison: ");
       	scanf("%d", &numVille);
       	rechercheChauffeurCapacite(pdebutVille, numVille);
         break;
 
       case 8:
-        printf("De quelle ville afficher les livraisons : ");
-        scanf("%d", &numVille);
-        afficherLivraison(pdebutVille, numVille);
+        printf("Capacite de la livraison : ");
+      	scanf("%d", &capacite);
+      	rechercheChauffeurCapaciteAll(pdebutVille, capacite);
         break;
 
       case 9:
