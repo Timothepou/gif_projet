@@ -1,4 +1,4 @@
-void modifierVille(ptville pdebutVille, int numVille)
+int modifierVille(ptville pdebutVille, int numVille)
 {
 	ptville px;
 	int newnumVille;
@@ -11,8 +11,9 @@ void modifierVille(ptville pdebutVille, int numVille)
 		printf("Quel est le noveau code postal : ");
 		scanf("%d", &newnumVille);
 		px->numVille = newnumVille;
-		printf("[!!!] La ville %d est bien devenue la ville %d !\n", numVille, px->numVille);	
-	}	
+		printf("[!!!] La ville %d est bien devenue la ville %d !\n", numVille, px->numVille);
+		return 1;
+	}
 }
 
 

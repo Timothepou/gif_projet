@@ -1,4 +1,4 @@
-void ajouterLivraison(ptville pdebutVille, int numVille){
+int ajouterLivraison(ptville pdebutVille, int numVille){
 
         ptlivraison py = (ptlivraison)malloc(sizeof(tlivraison)), px;
         ptville ptest = rechercherVille(pdebutVille, numVille), pz;
@@ -36,4 +36,5 @@ void ajouterLivraison(ptville pdebutVille, int numVille){
         px->livraisonSuivante = py;
         py->capacite = capacite;
         py->disponible = 1;
+        return 1;
 }

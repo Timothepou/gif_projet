@@ -1,4 +1,4 @@
-void supprimerLivraison(ptville pdebutVille, int numVille)
+int supprimerLivraison(ptville pdebutVille, int numVille)
 {
 	int presence = 0, numLivraison;
 	ptville pville = rechercherVille(pdebutVille, numVille);
@@ -8,12 +8,12 @@ void supprimerLivraison(ptville pdebutVille, int numVille)
 	}
 	ptlivraison pAvantx = pville->listeLivraison;
 	ptlivraison px = pville->listeLivraison->livraisonSuivante;
-	
+
 	afficherLivraison(pdebutVille, numVille);
-	
+
 	printf("Quelle livraison voulez-vous supprimer : ");
 	scanf("%d", &numLivraison);
-	
+
 	while(px->livraisonSuivante != NULL) // On vérifie que la livraison à supprimer existe
     {
         if(px->chauffeur == numLivraison)
@@ -23,7 +23,7 @@ void supprimerLivraison(ptville pdebutVille, int numVille)
         }
         px = px->livraisonSuivante;
     }
-    
+
     px = pville->listeLivraison->livraisonSuivante;
 
     if(presence == 1)
@@ -37,7 +37,9 @@ void supprimerLivraison(ptville pdebutVille, int numVille)
 
         printf("[OK] Suppression de la ville %d avec succès !\n", px->chauffeur);
         px = NULL; // le ptr px ne pointe nulle part
+        return 1;
     }
     else
         printf("[!!!] La livraison %d n'existe pas !\n", numLivraison);
+        return 0;
 }
