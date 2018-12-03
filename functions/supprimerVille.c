@@ -31,7 +31,6 @@ void supprimerVille(ptville pvilleDebut, ptville pdebutVillePoubelle, int numero
 		}
 		px->villeSuivante = pz->villeSuivante;
 		pz->villeSuivante = px; // ajout de la ville supprimée à la poubelle
-		printf("[OK] Ville %d ajoutee à la poubelle", px->numVille);
 		px->villePrecedente = pz;
 
         printf("[OK] Suppression de la ville %d avec succes !\n", px->numVille);
