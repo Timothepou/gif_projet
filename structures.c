@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <dos.h>
 
 typedef struct livraison tlivraison;
 typedef struct ville tville;
