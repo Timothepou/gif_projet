@@ -15,10 +15,15 @@ int modifierLivraison(ptville pdebutVille, int numVille)
         printf("Quelle est la livraison a modifier : ");
         scanf("%d", &numLivraison);
         px = pville->listeLivraison->livraisonSuivante;
-        while(px->chauffeur != numLivraison)
+        while(px->chauffeur != numLivraison && px->livraisonSuivante != NULL)
         {
             px = px->livraisonSuivante;
         }
+        if(px->livraisonSuivante == NULL)
+        {
+        	printf("[!!!] Cette livraison n'existe pas !");
+        	return 0;
+		}
         while(choix != 4)
         {
             printf("[1] - Modifier la disponibilite\n"

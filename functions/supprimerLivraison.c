@@ -35,7 +35,7 @@ int supprimerLivraison(ptville pdebutVille, int numVille)
         }
         pAvantx->livraisonSuivante = px->livraisonSuivante;
 
-        printf("[OK] Suppression de la ville %d avec succès !\n", px->chauffeur);
+        printf("[OK] Suppression de la ville %d avec succes !\n", px->chauffeur);
         px = NULL; // le ptr px ne pointe nulle part
         return 1;
     }

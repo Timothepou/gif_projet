@@ -19,7 +19,7 @@ int ajouterLivraison(ptville pdebutVille, int numVille){
             px = px->livraisonSuivante;
         }
 
-        printf("Où va la livraison : ");
+        printf("Ou va la livraison : ");
         scanf("%d", &postal);
         ptest = rechercherVille(pdebutVille, postal);
         if(ptest == NULL){
@@ -28,7 +28,8 @@ int ajouterLivraison(ptville pdebutVille, int numVille){
         }
         else{
             py->enLivraison = ptest;
-            printf("[OK] Livraison en direction de %d ajoutée avec succès !", py->enLivraison->numVille);
+            system("cls");
+            printf("[OK] Livraison en direction de %d ajoutee avec succes !\n", py->enLivraison->numVille);
         }
 
         py->chauffeur = rechercheNbChauffeur(pdebutVille) + 1; // fonction qui renvoie le numéro du dernier chauffeur + 1.

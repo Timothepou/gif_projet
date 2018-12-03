@@ -6,6 +6,6 @@ void afficherLivraison(ptville pdebutVille, int numVille){
     while(plivraison->livraisonSuivante->livraisonSuivante != NULL)
     {
         plivraison = plivraison->livraisonSuivante;
-        printf("[OK] Livraison nÂ°%d\n", plivraison->chauffeur);
+        printf("[OK] Livraison n°%d\n", plivraison->chauffeur);
     }
 }
