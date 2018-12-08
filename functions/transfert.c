@@ -1,48 +1,63 @@
 int transfert(ptville pdebutVille, int numVilleA, int numVilleB){
 
-	ptlivraison py,pw;
-
-	ptlivraison ptAvanty=(ptlivraison)malloc(sizeof(tlivraison));
+	ptlivraison py, pw, pAvanty;
 	int chauffeur;
-	
+
 	ptville px = rechercherVille(pdebutVille, numVilleA);
-	
+
 	if(px == NULL)
 	{
-		printf("[!!!] Cette ville n'existe pas !");
+		printf("[!!!] Cette ville n'existe pas !\n");
 		return 0;
 	}
 	else
     {
-		py = px->listeLivraison->livraisonSuivante;
-		printf("Quelle est le numero du chauffeur  : ");
+		py = px->listeLivraison;
+		afficherLivraison(pdebutVille, numVilleA);
+		printf("[?] Quelle est le numero du chauffeur  : ");
 		scanf("%d", &chauffeur);
 
-	   while(py->chauffeur != chauffeur)
-        {   
-            ptAvanty=py;
-            py = py->livraisonSuivante;
+	    while(py->chauffeur != chauffeur)
+        {
+            if(py->livraisonSuivante == NULL)
+            {
+                break;
+            }
+            else
+            {
+                pAvanty = py;
+                py = py->livraisonSuivante;
+            }
 		}
-		ptAvanty->livraisonSuivante=py->livraisonSuivante;
+		if(py->livraisonSuivante == NULL)
+        {
+            printf("[!!!] Cette livraison n'existe pas !\n");
+            return 0;
+        }
+        else
+            pAvanty->livraisonSuivante = py->livraisonSuivante;
     }
-	
-		
+
+
 ptville pz = rechercherVille(pdebutVille, numVilleB);
 
 	if(pz == NULL){
-		printf("[!!!] Cette ville n'existe pas !");
+		printf("[!!!] Cette ville n'existe pas !\n");
 		return 0;
 	}
 	else
     {
-		pw = pz->listeLivraison->livraisonSuivante;
-	   	while(pw->livraisonSuivante != NULL)
+		pw = pz->listeLivraison;
+	   	while(pw->livraisonSuivante->livraisonSuivante != NULL) // on va à la fin de la liste livraison de ville B (avant le bidon de fin)
 		{
-	   		pw=pw->livraisonSuivante;
+	   		pw = pw->livraisonSuivante;
 	   	}
 	   	py->livraisonSuivante = pw->livraisonSuivante;
 		pw->livraisonSuivante = py;
-	  //py->livraisonSuivante=NULL;
+		if(py->enLivraison->numVille == numVilleB)
+        {
+            py->enLivraison = NULL;
+            py->disponible = 1;
+        }
 	}
-
 }

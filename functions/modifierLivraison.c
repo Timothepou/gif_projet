@@ -6,13 +6,13 @@ int modifierLivraison(ptville pdebutVille, int numVille)
 
     if(pville == NULL)
     {
-        printf("Cette ville n'existe pas !");
+        printf("[!!!] Cette ville n'existe pas !\n");
         return 0;
     }
     else
     {
         afficherLivraison(pdebutVille, numVille);
-        printf("Quelle est la livraison a modifier : ");
+        printf("[?] Quelle est la livraison a modifier : ");
         scanf("%d", &numLivraison);
         px = pville->listeLivraison->livraisonSuivante;
         while(px->chauffeur != numLivraison && px->livraisonSuivante != NULL)
@@ -21,7 +21,7 @@ int modifierLivraison(ptville pdebutVille, int numVille)
         }
         if(px->livraisonSuivante == NULL)
         {
-        	printf("[!!!] Cette livraison n'existe pas !");
+        	printf("[!!!] Cette livraison n'existe pas !\n");
         	return 0;
 		}
         while(choix != 4)
@@ -36,17 +36,21 @@ int modifierLivraison(ptville pdebutVille, int numVille)
             switch(choix)
             {
                 case(1):
-                    printf("Disponibilite de la livraison %d : %d\n", px->chauffeur, px->disponible);
-                    printf("Modifier la disponibilite : ");
+                    printf("[INFO] Disponibilite de la livraison %d : %d\n", px->chauffeur, px->disponible);
+                    printf("[?] Modifier la disponibilite : ");
                     scanf("%d", &disponible);
                     if(disponible == 0 || disponible == 1)
                         px->disponible = disponible;
+                        if(disponible == 1){
+                            px->enLivraison = NULL;
+                            printf("[!!!] Cette ville est maintenant disponible, elle ne va donc nul part.\n");
+                        }
                     else
                         printf("[!!!] Veuillez entrer un chiffre valide (0 ou 1)\n");
                     break;
                 case(2):
                     printf("Capacite de la livraison %d : %d\n", px->chauffeur, px->capacite);
-                    printf("Modifier la capacite : ");
+                    printf("[?] Modifier la capacite : ");
                     scanf("%d", &newCapacite);
                     if(newCapacite > 0)
                         px->capacite = newCapacite;
@@ -54,18 +58,20 @@ int modifierLivraison(ptville pdebutVille, int numVille)
                         printf("[!!!] Veuillez entrer un chiffre valide ( >0 )\n");
                     break;
                 case(3):
-                    printf("Destination de la livraison %d : %d\n", px->chauffeur, px->enLivraison->numVille);
-                    printf("Modifier la destination : ");
+                    if(px->enLivraison == NULL)
+                        printf("[INFO] Cette livraison n'a aucune destination\n");
+                    else
+                        printf("[INFO] Destination de la livraison %d : %d\n", px->chauffeur, px->enLivraison->numVille);
+                    printf("[?] Modifier la destination : ");
                     scanf("%d", &newnumVille);
                     py = rechercherVille(pdebutVille, newnumVille);
-                    if(py == NULL)
-                    {
-                        printf("Cette ville n'existe pas !");
+                    if(py == NULL){
+                        printf("[!!!]Cette ville n'existe pas !\n");
                         return 0;
                     }
-                    else
-                    {
+                    else{
                         px->enLivraison = py;
+                        px->disponible = 0;
                     }
                     break;
                 case(4):

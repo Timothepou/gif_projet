@@ -1,10 +1,10 @@
-int supprimerLivraison(ptville pdebutVille, ptville pdebutLivraisonPoubelle, int numVille)
+int supprimerLivraison(ptville pdebutVille, ptlivraison pdebutLivraisonPoubelle, int numVille)
 {
 	int presence = 0, numLivraison;
 	ptville pville = rechercherVille(pdebutVille, numVille);
 	ptlivraison pz = pdebutLivraisonPoubelle;
 	if(pville == NULL){
-		printf("[!!!] Cette ville n'existe pas !");
+		printf("[!!!] Cette ville n'existe pas !\n");
 		return 0;
 	}
 	ptlivraison pAvantx = pville->listeLivraison;
@@ -12,7 +12,7 @@ int supprimerLivraison(ptville pdebutVille, ptville pdebutLivraisonPoubelle, int
 
 	afficherLivraison(pdebutVille, numVille);
 
-	printf("Quelle livraison voulez-vous supprimer : ");
+	printf("[?] Quelle livraison voulez-vous supprimer : ");
 	scanf("%d", &numLivraison);
 
 	while(px->livraisonSuivante != NULL) // On vérifie que la livraison à supprimer existe
@@ -36,13 +36,13 @@ int supprimerLivraison(ptville pdebutVille, ptville pdebutLivraisonPoubelle, int
         }
         while(pz->livraisonSuivante->livraisonSuivante != NULL) // on va à la fin de la liste poubelle livraison
 		{
-			pz = pz->villeSuivante;
+			pz = pz->livraisonSuivante;
 		}
         pAvantx->livraisonSuivante = px->livraisonSuivante;
         px->livraisonSuivante = pz->livraisonSuivante; // on ajoute la livraison supprimée à la poubelle
 		pz->livraisonSuivante = px;
 
-        printf("[OK] Suppression de la ville %d avec succes !\n", px->chauffeur);
+        printf("[OK] Suppression de la livraison %d avec succes !\n", px->chauffeur);
         px = NULL; // le ptr px ne pointe nulle part
         return 1;
     }
