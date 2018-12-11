@@ -54,10 +54,14 @@ ptville pz = rechercherVille(pdebutVille, numVilleB);
 	   	}
 	   	py->livraisonSuivante = pw->livraisonSuivante;
 		pw->livraisonSuivante = py;
-		if(py->enLivraison->numVille == numVilleB)
+		if(py->enLivraison != NULL)
         {
-            py->enLivraison = NULL;
-            py->disponible = 1;
+            if(py->enLivraison->numVille == numVilleB)
+            {
+                py->enLivraison = NULL;
+                py->disponible = 1;
+            }
         }
+        printf("[!!!] La livrasion a bien ete transfere !\n");
 	}
 }
