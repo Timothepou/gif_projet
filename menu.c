@@ -1,3 +1,7 @@
+// POUYET Timothé & LE ROY Tanguy
+// PEI 2 /-- 2018/2019 --/
+// GIF 1301
+
 #include "structures.c"
 #include "functions/rechercheVille.c"
 #include "functions/ajouterVille.c"
@@ -36,7 +40,7 @@ void afficherVille(ptville pdebutVille){
 
 int main(){
 
-  system("color 2A");
+  system("color 3F  ");
   system("cls");
 
   ptville pdebutVille = (ptville)malloc(sizeof(tville));
