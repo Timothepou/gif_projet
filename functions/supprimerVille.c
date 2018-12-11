@@ -78,7 +78,7 @@ int supprimerVille(ptville pdebutVille, ptville pdebutVillePoubelle, ptlivraison
         }
         // on le bidon de fin de livraison poubelle et la dernière livraison de px et la dernière livraison de poubelle
         pAvantfinLivraisonPoubelle->livraisonSuivante = px->listeLivraison->livraisonSuivante;
-        printf("OK");
+        printf("[!!!] La ville a bien ete supprimee !\n\n");
         pAvantfin->livraisonSuivante = pfinLivraisonPoubelle;
     }
     else{

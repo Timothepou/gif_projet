@@ -9,9 +9,7 @@ void rechercheChauffeurCapaciteAll(ptville pdebutVille, int capacite)
         while(py->livraisonSuivante != NULL)
         {
             if(py->capacite == capacite && py->disponible == 1)
-            {
-                printf("Le chauffeur %d est disponible dans la ville %d et a une capacite %d, se rend dans %d\n", py->chauffeur, px->numVille, py->capacite, py->enLivraison->numVille);
-            }
+                printf("Le chauffeur %d est disponible dans la ville %d et a une capacite %d\n", py->chauffeur, px->numVille, py->capacite);
             py = py->livraisonSuivante;
         }
         px = px->villeSuivante;

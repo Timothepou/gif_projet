@@ -10,20 +10,15 @@ int rechercheChauffeurCapacite(ptville pdebutVille,int numVille){
 	}
 	else
     {
-        px = pdebutVille->villeSuivante;
 		py = px->listeLivraison->livraisonSuivante;
-		printf("Quelle est la capacite de la livraion : ");
+		printf("[?] Quelle est la capacite de la livraion : ");
 		scanf("%d", &capacite);
 
         while(py->livraisonSuivante != NULL)
         {
             if(py->capacite == capacite && py->disponible == 1)
-            {
-            printf("Le chauffeur %d est disponible dans la ville %d et a une capacite %d, se rend dans %d\n", py->chauffeur, numVille, capacite, py->enLivraison->numVille);
-            }
+                printf("Le chauffeur %d est disponible dans la ville %d et a une capacite %d\n", py->chauffeur, px->numVille, py->capacite);
             py = py->livraisonSuivante;
         }
-
 	}
-
 }
