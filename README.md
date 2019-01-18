@@ -44,8 +44,9 @@
 Cryptanalyse mathématique  
 Analyse fréquentielle (1 ou groupe de lettres)  
 Ne pas hésiter communication email (problème, bloquage)  
-Faire des points (validation étapes finies, pas de hors sujet), ping le prof maximum toutes les 2/3 semaines.
-Il faut 1 rapport ainsi que 2 soutenances (1 intermédiaire et 1 finale) en groupe.
+Faire des points (validation étapes finies, pas de hors sujet), ping le prof maximum toutes les 2/3 semaines.  
+1 rapport  
+2 soutenances (1 intermédiaire et 1 finale) en groupe.  
 
 Sources intéressantes
   - ANSSI ou CNRS _histoire de la crypto_
