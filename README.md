@@ -5,7 +5,7 @@
 ### Attentes
   - Boîte à outils des codes _"anciens"_ + cryptanalyses pour démonstrations
   - Autonomie, travail moteur
-  - _Bonus : interface graphique (style [dCode.fr](https://www.dcode.fr)_
+  - _Bonus : interface graphique _(style [dCode.fr](https://www.dcode.fr)_
 
 ### Cahier des Charges
 1. Historique/bibliographie de la crypto (Timeline)
